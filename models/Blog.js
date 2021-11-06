@@ -5,12 +5,15 @@ const blogSchema = new Schema(
 	{
 		userId: {
 			type: String,
+			required: true,
 		},
 		title: {
 			type: String,
+			required: true,
 		},
 		text: {
 			type: String,
+			required: true,
 		},
 		categories: {
 			type: Array,

@@ -55,10 +55,7 @@ app.use(passport.initialize());
 
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', `http://${process.env.CLIENT_URL}`);
-	res.header(
-		'Access-Control-Allow-Headers',
-		'Origin, X-Requested-With, Content-Type, Accept, headers'
-	);
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, headers');
 	next();
 });
 
@@ -78,7 +75,7 @@ app.get('/', cors.cors, (req, res) => {
 ////•••••••••••••••••
 
 app.use(function (req, res, next) {
-	next(createError(404));
+	// next(createError(404));
 });
 
 app.use(function (err, req, res, next) {
@@ -102,12 +99,6 @@ connect
 	.then(() => {
 		console.log('MongoDB :: CONNECTED  ::  Appollo / Atlas');
 	})
-	.then(() =>
-		console.log(`GraphQL :: READY      ::  http://localhost:${PORT}${server.graphqlPath}`)
-	)
-	.then(() =>
-		app.listen({ port: PORT }, () =>
-			console.log(`Server  :: RUNNING    ::  http://localhost:${PORT}`)
-		)
-	)
+	.then(() => console.log(`GraphQL :: READY      ::  http://localhost:${PORT}${server.graphqlPath}`))
+	.then(() => app.listen({ port: PORT }, () => console.log(`Server  :: RUNNING    ::  http://localhost:${PORT}`)))
 	.catch((err) => console.log(err));
